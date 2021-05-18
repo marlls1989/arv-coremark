@@ -11,6 +11,6 @@ _entry:
 	addi a0, a0, 4
 	beq zero, zero, .clr_bss
 .clr_bss_done:
-	la ra, halt
-	j kmain
+	jal main
+  j halt
 
