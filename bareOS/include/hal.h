@@ -4,7 +4,7 @@
 #include "prototypes.h"
 
 #define TIMER_REG (*(volatile char*)0x80006000)
-#define UART_REG (*(volatile char*)0x80001000)
+#define UART_REG (*(volatile char*)0x80004000)
 
 // Stubs, need real implementation
 static inline int enter_critical() { return 0; }

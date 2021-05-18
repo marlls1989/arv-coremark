@@ -61,7 +61,7 @@
  #define COMPILER_FLAGS "-O2" /* "Please put compiler flags here (e.g. -o3)" */
 #endif
 #ifndef MEM_LOCATION 
- #define MEM_LOCATION "STACK"
+ #define MEM_LOCATION "MALLOC"
 #endif
 
 /* Data Types :
@@ -113,7 +113,7 @@ typedef ee_u32 CORE_TICKS;
 	MEM_STACK - to allocate the data block on the stack (NYI).
 */
 #ifndef MEM_METHOD
-#define MEM_METHOD MEM_STATIC
+#define MEM_METHOD MEM_MALLOC
 #endif
 
 /* Configuration : MULTITHREAD

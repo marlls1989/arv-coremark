@@ -39,7 +39,7 @@ SECTIONS {
 			*(.bss.*)
 			. = ALIGN(4);
 			_bss_end = . ;
-			. += 0x2000;
+			. += 0x4000;
 			_stack = .;
 	}
 
