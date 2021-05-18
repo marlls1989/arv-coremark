@@ -44,7 +44,7 @@ volatile ee_s32 seed5_volatile = 0;
 CORETIMETYPE
 barebones_clock()
 {
-  return (CORETIMETYPE) TIMER_REG;
+  return TIMER_REG;
 }
 /* Define : TIMER_RES_DIVIDER
         Divider to trade off timer resolution and total time that can be
@@ -54,12 +54,10 @@ barebones_clock()
    does not occur. If there are issues with the return value overflowing,
    increase this value.
         */
-#define CLOCKS_PER_SEC             1000000000
 #define GETMYTIME(_t)              (*_t = barebones_clock())
 #define MYTIMEDIFF(fin, ini)       ((fin) - (ini))
-#define TIMER_RES_DIVIDER          1000
 #define SAMPLE_TIME_IMPLEMENTATION 1
-#define EE_TICKS_PER_SEC           (CLOCKS_PER_SEC / TIMER_RES_DIVIDER)
+#define EE_TICKS_PER_SEC           1000000
 
 /** Define Host specific (POSIX), or target specific global time variables. */
 static CORETIMETYPE start_time_val, stop_time_val;
@@ -140,6 +138,7 @@ portable_init(core_portable *p, int *argc, char *argv[])
         ee_printf("ERROR! Please define ee_u32 to a 32b unsigned type!\n");
     }
     p->portable_id = 1;
+    ee_printf("Starting CoreMark\n");
 }
 /* Function : portable_fini
         Target specific final code
@@ -148,4 +147,6 @@ void
 portable_fini(core_portable *p)
 {
     p->portable_id = 0;
+    ee_printf("CoreMark Finished\n");
+    for(;;) halt();
 }
