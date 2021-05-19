@@ -1,6 +1,6 @@
 TRIPLET = riscv32-unknown-elf
 CC = $(TRIPLET)-gcc
-CFLAGS = -IbareOS/include -O2 -fno-builtin -march=rv32i -nostdinc -mbranch-cost=7 -DITERATIONS=1 -DCORE_DEBUG=1
+CFLAGS = -IbareOS/include -O2 -fno-builtin -march=rv32i -nostdinc -mbranch-cost=7 -DITERATIONS=0 -DCORE_DEBUG=0
 AS = $(TRIPLET)-as
 ASFLAGS = -march=rv32i
 CPP = $(TRIPLET)-g++
