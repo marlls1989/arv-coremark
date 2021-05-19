@@ -1,6 +1,6 @@
 /*
  * software implementation of multiply/divide and 64-bit routines
- * copied from Hellfire-OS by Sergio Johann Filho
+ * copied from Sergio Johann Filho's Hellfire-OS
  * https://github.com/sjohann81/hellfireos
 */
 
