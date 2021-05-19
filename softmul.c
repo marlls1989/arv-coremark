@@ -4,7 +4,7 @@
  * https://github.com/sjohann81/hellfireos
 */
 
-#include "include/prototypes.h"
+#include "prototypes.h"
 
 typedef union{
 	int64_t all;

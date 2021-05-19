@@ -21,7 +21,7 @@ Original Author: Shay Gal-on
    different platforms
 */
 
-#include <libos.h>
+#include "hal.h"
 
 #ifndef CORE_PORTME_H
 #define CORE_PORTME_H

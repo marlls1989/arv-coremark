@@ -12,22 +12,21 @@ OBJDUMP = $(TRIPLET)-objdump
 
 PROGNAME = coremark
 
+SRC_FILES = crt0.s \
+	arch.s \
+	softmul.c \
+	core_list_join.c \
+	core_matrix.c \
+	core_portme.c \
+	core_state.c \
+	core_util.c \
+	ee_printf.c \
+	core_main.c
+
 BIN_FILES = $(addsuffix .bin, $(PROGNAME))
 LST_FILES = $(addsuffix .lst, $(PROGNAME))
-
-BARE_OS = bareOS/crt0.o \
-	bareOS/arch.o \
-	bareOS/libos.o \
-	bareOS/malloc.o \
-	bareOS/softmul.o
-
-COREMARK = core_list_join.o \
-	core_matrix.o \
-	core_portme.o \
-	core_state.o \
-	core_util.o \
-	ee_printf.o \
-	core_main.o
+ELF_FILES = $(addsuffix .elf, $(PROGNAME))
+OBJ_FILES = $(patsubst %.s, %.o, $(patsubst %.c, %.o, $(SRC_FILES)))
 
 all : $(BIN_FILES) $(LST_FILES)
 
@@ -46,8 +45,8 @@ all : $(BIN_FILES) $(LST_FILES)
 %.o: %.s
 	$(AS) $(ASFLAGS) -o $@ $<
 
-coremark.elf: $(BARE_OS) $(COREMARK)
+$(ELF_FILES): $(OBJ_FILES)
 	$(LD) -o $@ $+ $(LDFLAGS)
 
 clean :
-	rm -f $(BIN_FILES) $(LST_FILES) $(BARE_OS) $(wildcard *~) $(wildcard *.o) coremark.elf
+	rm -f $(BIN_FILES) $(LST_FILES) $(OBJ_FILES) $(ELF_FILES) $(wildcard *~)
